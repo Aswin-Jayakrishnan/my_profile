@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aswin.VV - Profile</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #fafbfc;
+            --bg-secondary: #f4f6f8;
+            --bg-card: #ffffff;
+            --bg-elevated: #ffffff;
+            --text-primary: #1a1f2e;
+            --text-secondary: #4a5568;
+            --text-muted: #718096;
+            --accent-primary: #e84545;
+            --accent-secondary: #d63031;
+            --accent-light: #fff5f5;
+            --accent-glow: rgba(232, 69, 69, 0.15);
+            --border-color: #e2e8f0;
+            --border-subtle: #edf2f7;
+            --gradient-primary: linear-gradient(135deg, #e84545 0%, #d63031 100%);
+            --gradient-bg: linear-gradient(135deg, #fafbfc 0%, #f0f4f8 100%);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+            --shadow-glow: 0 0 32px rgba(232, 69, 69, 0.2);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--gradient-bg);
+            color: var(--text-primary);
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* BACKGROUND DECORATION */
+        .bg-decoration {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.5;
+        }
+
+        .bg-decoration::before {
+            content: '';
+            position: absolute;
+            top: -15%;
+            right: -5%;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(232, 69, 69, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .bg-decoration::after {
+            content: '';
+            position: absolute;
+            bottom: -10%;
+            left: -5%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(99, 110, 250, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        /* SECTION STYLING */
+        section {
+            position: relative;
+            z-index: 1;
+            padding: 100px 0;
+        }
+
+        section:nth-child(even) {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 70px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .section-title {
+            font-size: 3.25rem;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #1a1f2e 0%, #4a5568 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.03em;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 92vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 100px;
+            position: relative;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 90px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-text h1 {
+            font-size: 3.75rem;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            color: var(--text-primary);
+        }
+
+        .hero-text h1 span {
+            display: block;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            margin-bottom: 36px;
+            font-weight: 500;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .social-link {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1.125rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .social-link:hover {
+            background: var(--accent-primary);
+            border-color: var(--accent-primary);
+            color: white;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            padding: 16px 36px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 1rem;
+            letter-spacing: 0.01em;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: 0 6px 24px rgba(232, 69, 69, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 36px rgba(232, 69, 69, 0.4);
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            max-width: 480px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 28px 24px;
+            border-radius: 20px;
+            border: 2px solid var(--border-subtle);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--accent-primary);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-number {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        /* IMAGE SECTION */
+        .hero-image {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            animation: fadeInRight 1s ease-out;
+        }
+
+        .main-image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 460px;
+            height: 460px;
+            margin: 0 auto;
+        }
+
+        .image-ring {
+            position: absolute;
+            inset: -10px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            opacity: 0.15;
+            filter: blur(20px);
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 0.12;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.2;
+                transform: scale(1.03);
+            }
+        }
+
+        .image-ring {
+            animation: pulse-glow 4s ease-in-out infinite;
+        }
+
+        .main-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid white;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.12);
+        }
+
+        .main-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.16);
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-gallery {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 16px;
+        }
+
+        .thumbnail {
+            width: 90px;
+            height: 90px;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 3px solid var(--border-color);
+            transition: all 0.3s ease;
+            opacity: 0.6;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .thumbnail:hover {
+            opacity: 1;
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .thumbnail.active {
+            border-color: var(--accent-primary);
+            opacity: 1;
+            box-shadow: 0 6px 20px var(--accent-glow);
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* LIGHTBOX */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            animation: zoomIn 0.4s ease-out;
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 20px;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.2);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -60px;
+            right: 0;
+            background: white;
+            border: 2px solid var(--border-color);
+            color: var(--text-primary);
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .lightbox-close:hover {
+            background: var(--accent-primary);
+            color: white;
+            border-color: var(--accent-primary);
+            transform: rotate(90deg);
+        }
+
+        /* CARDS GRID */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .card {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 24px;
+            border: 2px solid var(--border-subtle);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(232, 69, 69, 0.03) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-primary);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            color: white;
+            margin-bottom: 28px;
+            box-shadow: 0 8px 24px var(--accent-glow);
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-title {
+            font-size: 1.625rem;
+            margin-bottom: 28px;
+            color: var(--text-primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-list {
+            list-style: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            border-bottom: 2px solid var(--border-subtle);
+            transition: all 0.3s ease;
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+        }
+
+        .info-item:hover {
+            padding-left: 12px;
+        }
+
+        .info-label {
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+            font-weight: 500;
+        }
+
+        .info-value {
+            color: var(--text-secondary);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* HOROSCOPE */
+        .horoscope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+            gap: 36px;
+            margin-top: 50px;
+        }
+
+        .horo-box {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: 24px;
+            border: 2px solid var(--border-subtle);
+            transition: all 0.4s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .horo-box:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent-primary);
+        }
+
+        .horo-title {
+            font-size: 1.375rem;
+            font-weight: 800;
+            margin-bottom: 28px;
+            text-align: center;
+            color: var(--accent-primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .horo-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1rem;
+        }
+
+        .horo-table td {
+            border: 2px solid var(--border-color);
+            padding: 22px 14px;
+            text-align: center;
+            vertical-align: middle;
+            min-height: 90px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            background: var(--bg-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .horo-table td:hover {
+            background: white;
+            color: var(--text-primary);
+            box-shadow: inset 0 0 0 2px var(--accent-primary);
+        }
+
+        .horo-table td.center {
+            background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
+            color: white;
+            font-weight: 800;
+            font-size: 1.125rem;
+        }
+
+        .horo-table td.center:hover {
+            box-shadow: none;
+        }
+
+        /* ANIMATIONS */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* TAB NAVIGATION */
+        .tab-navigation {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 16px 32px;
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .tab-btn:hover {
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .tab-btn.active {
+            background: var(--gradient-primary);
+            color: white;
+            border-color: var(--accent-primary);
+            box-shadow: 0 6px 24px var(--accent-glow);
+        }
+
+        .tab-btn i {
+            font-size: 1.125rem;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.75rem;
+            }
+
+            .social-links,
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .horoscope-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .horo-table {
+                font-size: 0.9375rem;
+            }
+
+            .horo-table td {
+                padding: 16px 10px;
+            }
+
+            .tab-navigation {
+                gap: 10px;
+            }
+
+            .tab-btn {
+                padding: 14px 24px;
+                font-size: 0.9375rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-text h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                padding: 14px 28px;
+                font-size: 0.9375rem;
+            }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .section-header {
+                margin-bottom: 50px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .card {
+                padding: 32px;
+            }
+
+            .tab-btn {
+                padding: 12px 20px;
+                font-size: 0.875rem;
+                flex: 1;
+                min-width: 140px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-decoration"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>
+                        Hello, I'm<br>
+                        <span>Aswin.VV</span>
+                    </h1>
+                    <p class="hero-subtitle">IT Professional | MSc CS Graduate</p>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+
+                    <div class="hero-buttons">
+                        <a href="#about" class="btn btn-primary">
+                            <span>View Profile</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">28</div>
+                            <div class="stat-label">Years Old</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">MSc</div>
+                            <div class="stat-label">CS Graduate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <div class="main-image-wrapper">
+                        <div class="image-ring"></div>
+                        <div class="main-image"
+                            onclick="openLightbox('https://vaniyamarriagebureau.com/public/uploads/2025-01-18/img-20250118-wa0032.jpg')">
+                            <img id="main-img"
+                                src="https://vaniyamarriagebureau.com/public/uploads/2025-01-18/img-20250118-wa0032.jpg"
+                                alt="Aswin.VV">
+                        </div>
+                    </div>
+                    <div class="thumbnail-gallery">
+                        <div class="thumbnail active"
+                            onclick="changeImage('https://vaniyamarriagebureau.com/public/uploads/2025-01-18/img-20250118-wa0032.jpg', this)">
+                            <img src="https://vaniyamarriagebureau.com/public/uploads/2025-01-18/img-20250118-wa0032.jpg"
+                                alt="Photo 1">
+                        </div>
+                        <div class="thumbnail"
+                            onclick="changeImage('https://vaniyamarriagebureau.com/public/uploads/2025-01-18/img-20250118-wa0031.jpg', this)">
+                            <img src="https://vaniyamarriagebureau.com/public/uploads/2025-01-18/img-20250118-wa0031.jpg"
+                                alt="Photo 2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <div class="lightbox-close" onclick="closeLightbox()">
+                <i class="fas fa-times"></i>
+            </div>
+            <img id="lightbox-img" src="" alt="Full size image">
+        </div>
+    </div>
+
+    <!-- DETAILS SECTION WITH TABS -->
+    <section id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Explore my profile details</p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-btn active" onclick="switchTab('personal')">
+                    <i class="fas fa-user"></i>
+                    <span>Personal Details</span>
+                </button>
+                <button class="tab-btn" onclick="switchTab('family')">
+                    <i class="fas fa-home"></i>
+                    <span>Family Details</span>
+                </button>
+                <button class="tab-btn" onclick="switchTab('horoscope')">
+                    <i class="fas fa-star"></i>
+                    <span>Horoscope Details</span>
+                </button>
+            </div>
+
+            <!-- Personal Details Tab -->
+            <div id="personal-tab" class="tab-content active">
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-user"></i></div>
+                        <h3 class="card-title">Basic Information</h3>
+                        <ul class="info-list">
+                            <li class="info-item">
+                                <span class="info-label">Age</span>
+                                <span class="info-value">28 yrs</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Gender</span>
+                                <span class="info-value">Male</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Marital Status</span>
+                                <span class="info-value">Unmarried</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Height</span>
+                                <span class="info-value">172 cm</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Weight</span>
+                                <span class="info-value">59 Kg</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <h3 class="card-title">Location</h3>
+                        <ul class="info-list">
+                            <li class="info-item">
+                                <span class="info-label">Residence</span>
+                                <span class="info-value">Azhikode</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">District</span>
+                                <span class="info-value">Kannur</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <h3 class="card-title">Education & Career</h3>
+                        <ul class="info-list">
+                            <li class="info-item">
+                                <span class="info-label">Education</span>
+                                <span class="info-value">MSc CS</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Occupation</span>
+                                <span class="info-value">IT Professional</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Work Location</span>
+                                <span class="info-value">Ernakulam</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Annual Income</span>
+                                <span class="info-value">6-8 Lakh</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family Details Tab -->
+            <div id="family-tab" class="tab-content">
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-male"></i></div>
+                        <h3 class="card-title">Father</h3>
+                        <ul class="info-list">
+                            <li class="info-item">
+                                <span class="info-label">Name</span>
+                                <span class="info-value">Jayakrishnan.VV</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Occupation</span>
+                                <span class="info-value">Ration Shop</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-female"></i></div>
+                        <h3 class="card-title">Mother</h3>
+                        <ul class="info-list">
+                            <li class="info-item">
+                                <span class="info-label">Name</span>
+                                <span class="info-value">Jayasree.P</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Occupation</span>
+                                <span class="info-value">House wife</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-users"></i></div>
+                        <h3 class="card-title">Siblings</h3>
+                        <ul class="info-list">
+                            <li class="info-item">
+                                <span class="info-label">Brothers</span>
+                                <span class="info-value">1</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Horoscope Details Tab -->
+            <div id="horoscope-tab" class="tab-content">
+                <div class="cards-grid" style="margin-bottom: 60px;">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-star"></i></div>
+                        <h3 class="card-title">Birth Details</h3>
+                        <ul class="info-list">
+                            <li class="info-item">
+                                <span class="info-label">Star</span>
+                                <span class="info-value">Vishakam</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Birth Time</span>
+                                <span class="info-value">03.06 PM</span>
+                            </li>
+                            <li class="info-item">
+                                <span class="info-label">Desa Balance</span>
+                                <span class="info-value">6.7.24</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="horoscope-grid">
+                    <div class="horo-box">
+                        <p class="horo-title">ഗ്രഹനില (Rasi Chart)</p>
+                        <table class="horo-table">
+                            <tr>
+                                <td>മ</td>
+                                <td></td>
+                                <td></td>
+                                <td>ര</td>
+                            </tr>
+                            <tr>
+                                <td>ശി</td>
+                                <td colspan="2" rowspan="2" class="center">ഗ്രഹനില</td>
+                                <td>ശു<br>ബു</td>
+                            </tr>
+                            <tr>
+                                <td>ഗു</td>
+                                <td>സ</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>ല</td>
+                                <td>ച<br>മാ</td>
+                                <td>കു</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="horo-box">
+                        <p class="horo-title">നവാംശകം (Navamsha Chart)</p>
+                        <table class="horo-table">
+                            <tr>
+                                <td>മാ</td>
+                                <td></td>
+                                <td></td>
+                                <td>ര ച<br>കു ശി</td>
+                            </tr>
+                            <tr>
+                                <td>ശു<br>മ</td>
+                                <td colspan="2" rowspan="2" class="center">നവാംശകം</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>ല<br>ഗു</td>
+                            </tr>
+                            <tr>
+                                <td>ബു<br>സ</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Tab switching function
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            tabButtons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName + '-tab').classList.add('active');
+
+            // Add active class to clicked button
+            event.target.closest('.tab-btn').classList.add('active');
+
+            // Scroll to section smoothly
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function changeImage(src, element) {
+            document.getElementById('main-img').src = src;
+            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card, .horo-box').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+
+</html>
