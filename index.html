@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Aswin.VV - Profile</title>
+    <title>Aswin.VV - Matrimony Profile</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
@@ -610,6 +610,52 @@
 
         .carousel-slide img:hover {
             transform: scale(1.05);
+        }
+
+        /* IMAGE LOADING SYSTEM */
+        .img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-secondary);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .loader {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 107, 107, 0.1);
+            border-top: 3px solid var(--accent-primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            z-index: 1;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .img-hidden {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .img-visible {
+            opacity: 1;
+            transition: opacity 0.5s ease;
         }
 
         @keyframes fadeIn {
@@ -1462,12 +1508,20 @@
                 <div class="carousel-container">
                     <div class="carousel-main">
                         <div class="carousel-slide active">
-                            <img src="https://drive.google.com/thumbnail?id=1SVBNvMW21lIQRqalnoetafYi2JZ_vsRA&sz=w1000"
-                                alt="Aswin VV - Photo 1" onclick="openLightbox(this.src)">
+                            <div class="img-wrapper">
+                                <div class="loader"></div>
+                                <img src="https://drive.google.com/thumbnail?id=1SVBNvMW21lIQRqalnoetafYi2JZ_vsRA&sz=w1000"
+                                    alt="Aswin VV - Photo 1" class="img-hidden" onload="handleImageLoad(this)"
+                                    onerror="handleImageError(this)" onclick="openLightbox(this.src)">
+                            </div>
                         </div>
                         <div class="carousel-slide">
-                            <img src="https://drive.google.com/thumbnail?id=1S2bYqIJ-OfMssC50GkzOrq8bv-BOu3n9&sz=w1000"
-                                alt="Aswin VV - Photo 2" onclick="openLightbox(this.src)">
+                            <div class="img-wrapper">
+                                <div class="loader"></div>
+                                <img src="https://drive.google.com/thumbnail?id=1S2bYqIJ-OfMssC50GkzOrq8bv-BOu3n9&sz=w1000"
+                                    alt="Aswin VV - Photo 2" class="img-hidden" onload="handleImageLoad(this)"
+                                    onerror="handleImageError(this)" onclick="openLightbox(this.src)">
+                            </div>
                         </div>
                         <!-- <div class="carousel-slide">
                             <img src="https://drive.google.com/thumbnail?id=15tyNqgTR6Dd_z6UA2QaPH9qYEAkA0RwG&sz=w1000"
@@ -1878,28 +1932,40 @@
             </div>
 
             <div class="photo-grid">
-                <div class="photo-item"
-                    onclick="openLightbox('https://drive.google.com/thumbnail?id=1SVBNvMW21lIQRqalnoetafYi2JZ_vsRA&sz=w1000')">
-                    <img src="https://drive.google.com/thumbnail?id=1SVBNvMW21lIQRqalnoetafYi2JZ_vsRA&sz=w1000"
-                        alt="Aswin VV - Photo 1">
+                <div class="photo-item">
+                    <div class="img-wrapper">
+                        <div class="loader"></div>
+                        <img src="https://drive.google.com/thumbnail?id=1SVBNvMW21lIQRqalnoetafYi2JZ_vsRA&sz=w1000"
+                            alt="Aswin VV - Photo 1" class="img-hidden" onload="handleImageLoad(this)"
+                            onerror="handleImageError(this)" onclick="openLightbox(this.src)">
+                    </div>
                     <div class="photo-caption">Portrait 1</div>
                 </div>
-                <div class="photo-item"
-                    onclick="openLightbox('https://drive.google.com/thumbnail?id=1S2bYqIJ-OfMssC50GkzOrq8bv-BOu3n9&sz=w1000')">
-                    <img src="https://drive.google.com/thumbnail?id=1S2bYqIJ-OfMssC50GkzOrq8bv-BOu3n9&sz=w1000"
-                        alt="Aswin VV - Photo 2">
+                <div class="photo-item">
+                    <div class="img-wrapper">
+                        <div class="loader"></div>
+                        <img src="https://drive.google.com/thumbnail?id=1S2bYqIJ-OfMssC50GkzOrq8bv-BOu3n9&sz=w1000"
+                            alt="Aswin VV - Photo 2" class="img-hidden" onload="handleImageLoad(this)"
+                            onerror="handleImageError(this)" onclick="openLightbox(this.src)">
+                    </div>
                     <div class="photo-caption">Portrait 2</div>
                 </div>
-                <div class="photo-item"
-                    onclick="openLightbox('https://drive.google.com/thumbnail?id=15tyNqgTR6Dd_z6UA2QaPH9qYEAkA0RwG&sz=w1000')">
-                    <img src="https://drive.google.com/thumbnail?id=15tyNqgTR6Dd_z6UA2QaPH9qYEAkA0RwG&sz=w1000"
-                        alt="Aswin VV - Photo 3">
+                <div class="photo-item">
+                    <div class="img-wrapper">
+                        <div class="loader"></div>
+                        <img src="https://drive.google.com/thumbnail?id=15tyNqgTR6Dd_z6UA2QaPH9qYEAkA0RwG&sz=w1000"
+                            alt="Aswin VV - Photo 3" class="img-hidden" onload="handleImageLoad(this)"
+                            onerror="handleImageError(this)" onclick="openLightbox(this.src)">
+                    </div>
                     <div class="photo-caption">Portrait 3</div>
                 </div>
-                <div class="photo-item"
-                    onclick="openLightbox('https://drive.google.com/thumbnail?id=1DVfV0uIiOyXw3Hx_Pxhl7XFH8C57CTK6&sz=w1000')">
-                    <img src="https://drive.google.com/thumbnail?id=1DVfV0uIiOyXw3Hx_Pxhl7XFH8C57CTK6&sz=w1000"
-                        alt="Aswin VV - Photo 4">
+                <div class="photo-item">
+                    <div class="img-wrapper">
+                        <div class="loader"></div>
+                        <img src="https://drive.google.com/thumbnail?id=1DVfV0uIiOyXw3Hx_Pxhl7XFH8C57CTK6&sz=w1000"
+                            alt="Aswin VV - Photo 4" class="img-hidden" onload="handleImageLoad(this)"
+                            onerror="handleImageError(this)" onclick="openLightbox(this.src)">
+                    </div>
                     <div class="photo-caption">Portrait 4</div>
                 </div>
             </div>
@@ -1976,6 +2042,33 @@
     </div>
 
     <script>
+        // Image handling functions
+        function handleImageError(img) {
+            console.log("Image failed to load:", img.src);
+            if (img.dataset.triedFallback) {
+                console.log("Fallback also failed.");
+                return;
+            }
+
+            const url = img.src;
+            const match = url.match(/id=([^&]+)/);
+            if (match && match[1]) {
+                console.log("Trying fallback for ID:", match[1]);
+                img.dataset.triedFallback = 'true';
+                img.src = `https://lh3.googleusercontent.com/d/${match[1]}=w1000`;
+            }
+        }
+
+        function handleImageLoad(img) {
+            console.log("Image loaded successfully:", img.src);
+            img.classList.remove('img-hidden');
+            img.classList.add('img-visible');
+            const loader = img.parentElement.querySelector('.loader');
+            if (loader) {
+                loader.style.display = 'none';
+            }
+        }
+
         // Create floating particles
         function createParticles() {
             const particlesContainer = document.getElementById('particles');
@@ -2187,4 +2280,3 @@
 </body>
 
 </html>
-
